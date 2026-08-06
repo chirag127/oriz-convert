@@ -1,0 +1,97 @@
+/*
+ * oriz-convert — bespoke theme. Alchemy / transmutation.
+ * Deep violet + molten gold. Fraunces (serif display) + Inter (sans body) +
+ * JetBrains Mono (code). Overrides the --oz-* contract AND the oz-chrome legacy
+ * aliases so both token sets resolve to this site's identity.
+ */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+
+:root {
+  color-scheme: dark;
+
+  /* palette — alchemy */
+  --violet-950: #0d0716;
+  --violet-900: #160b28;
+  --violet-850: #1e1036;
+  --violet-800: #291548;
+  --violet-700: #3a1d63;
+  --violet-500: #7c3aed;
+  --violet-400: #a774ff;
+  --gold-500: #d4a017;
+  --gold-400: #e8b84b;
+  --gold-300: #f2d27a;
+  --ink: #efe9f7;
+  --ink-mute: #b7a9d0;
+
+  /* --- oz contract overrides --- */
+  --oz-bg: var(--violet-950);
+  --oz-fg: var(--ink);
+  --oz-surface: var(--violet-850);
+  --oz-muted: var(--ink-mute);
+  --oz-border: #3a2a58;
+  --oz-accent: var(--gold-400);
+  --oz-accent-fg: var(--violet-950);
+
+  --oz-font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --oz-font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --oz-font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* --- oz-chrome legacy aliases (the chrome CSS reads these) --- */
+  --oz-ink: var(--ink);
+  --oz-ink-mute: var(--ink-mute);
+  --oz-paper: rgba(22, 11, 40, 0.72);
+  --oz-paper-2: var(--violet-900);
+  --oz-rule: var(--oz-border);
+  --oz-container: 76rem;
+  --oz-header-h: 4rem;
+  --oz-text-lg: 1.35rem;
+  --oz-text-md: 1rem;
+  --oz-text-sm: 0.875rem;
+  --oz-space-5: 1.5rem;
+  --oz-z-overlay: 1000;
+}
+
+/* force dark: this concept is a dark alchemical lab, no light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --oz-bg: var(--violet-950);
+    --oz-fg: var(--ink);
+    --oz-accent: var(--gold-400);
+    --oz-accent-fg: var(--violet-950);
+  }
+}
+
+body {
+  background:
+    radial-gradient(1100px 620px at 50% -10%, rgba(124, 58, 237, 0.28), transparent 60%),
+    radial-gradient(900px 520px at 85% 110%, rgba(212, 160, 23, 0.12), transparent 55%),
+    var(--violet-950);
+  min-height: 100dvh;
+}
+
+/* sticky, glassy header */
+.oz-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--oz-rule);
+}
+.oz-wordmark__dot {
+  color: var(--gold-400);
+}
+.oz-header__nav a {
+  color: var(--ink-mute);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--oz-dur-fast) var(--oz-ease-out);
+}
+.oz-header__nav a:hover {
+  color: var(--gold-300);
+}
+
+.oz-footer {
+  margin-top: var(--oz-space-16);
+}

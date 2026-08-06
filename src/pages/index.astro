@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro'
+import ConverterApp from '../components/ConverterApp.tsx'
+---
+
+<Base>
+  <div class="hero">
+    <p class="hero__eyebrow">Transmutation Lab</p>
+    <h1 class="hero__title">Turn any format <em>into gold</em></h1>
+    <p class="hero__sub">
+      CSV ⇌ JSON ⇌ YAML ⇌ XML, units, number bases, and color formats — transmuted in the browser. Nothing is
+      uploaded. Nothing is stored. Everything runs on your machine.
+    </p>
+  </div>
+
+  <ConverterApp client:load />
+</Base>
