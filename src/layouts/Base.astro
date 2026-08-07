@@ -10,10 +10,22 @@ interface Props {
   description?: string
 }
 const {
-  title = 'oriz-convert — Universal Converter',
-  description = 'Transmute data between CSV, JSON, YAML, XML. Convert units, number bases, and color formats. 100% client-side — nothing leaves your browser.',
+  title = 'oriz Convert — Free Online Converter: CSV, JSON, YAML, XML, Units, Colors (no signup)',
+  description = 'Free online converter — CSV, JSON, YAML, XML, units, number bases and color formats. 100% in your browser, no upload, no signup. Instant, private, keyless.',
 } = Astro.props
 const canonical = new URL(Astro.url.pathname, Astro.site)
+const ogImage = new URL('/screenshots/desktop.png', Astro.site).href
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'oriz Convert',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Web',
+  url: 'https://convert.oriz.in',
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  author: { '@type': 'Person', name: 'Chirag Singhal' },
+}
 ---
 
 <!doctype html>
@@ -24,15 +36,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site)
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="oriz Convert" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="theme-color" content="#0d0716" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
     <script is:inline src="/registerSW.js"></script>
   </head>
   <body>
