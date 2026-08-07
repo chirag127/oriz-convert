@@ -30,7 +30,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site)
     <meta property="og:url" content={canonical} />
     <meta name="theme-color" content="#0d0716" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline src="/registerSW.js"></script>
   </head>
   <body>
     <OzToolShell site="convert" title="Universal Converter" wordmarkHref="https://oriz.in">
