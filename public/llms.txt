@@ -1,0 +1,23 @@
+# oriz Convert
+
+> Free universal converter that runs 100% in your browser — no upload, no signup, nothing stored. Transmute structured data (CSV, JSON, YAML, XML), physical units, number bases, and color formats instantly. Optional keyless AI can describe a dataset or infer a JSON Schema.
+
+Live app: https://convert.oriz.in — static Astro site with React 19 islands. All conversion is client-side; parsers load on demand. Optional AI via the shared `@chirag127/oz-ai` package (g4f multi-provider failover, no API key); core conversion works even when AI is down.
+
+## Tools
+
+- [Data formats](https://convert.oriz.in/): CSV ⇌ JSON ⇌ YAML ⇌ XML in any direction — paste text or drag-drop a file, copy or download the result.
+- [Units](https://convert.oriz.in/): length, mass, temperature, and data-size conversion — one value converts to every unit in the category at once.
+- [Number bases](https://convert.oriz.in/): binary / octal / decimal / hex / base-2..36, arbitrary-precision via BigInt; accepts `0x`, `0b`, `0o` prefixes.
+- [Color](https://convert.oriz.in/): HEX ⇌ RGB ⇌ HSL with alpha, live swatch, native color picker.
+
+## AI (optional, keyless)
+
+- Describe dataset: plain-language summary of a pasted dataset — fields, types, row count, one observation.
+- Infer JSON Schema: draft-07 schema inferred from sample data.
+
+## About
+
+- [About / info page](https://chirag127.github.io/oriz-convert/): what oriz Convert is, features, and tech.
+- [Source code](https://github.com/chirag127/oriz-convert): MIT-licensed, on GitHub.
+- [Full LLM text](https://convert.oriz.in/llms-full.txt): complete site content as clean markdown for AI ingestion.

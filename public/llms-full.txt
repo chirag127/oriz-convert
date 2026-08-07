@@ -1,0 +1,86 @@
+# oriz Convert — Universal Converter
+
+> Full text content of https://convert.oriz.in, as clean markdown for LLM/agent ingestion. For humans, use the live app.
+
+## Summary
+
+oriz Convert is a free universal converter that runs entirely in your browser. It transmutes structured data between CSV, JSON, YAML, and XML; converts physical units; converts number bases; and converts color formats. No upload, no signup, nothing stored — every conversion runs on your machine. An optional AI feature can describe a pasted dataset or infer a JSON Schema, powered by a keyless multi-provider AI package; it is never required and core conversion works even when AI is unavailable.
+
+- Live app: https://convert.oriz.in
+- Source: https://github.com/chirag127/oriz-convert
+- License: MIT
+- Author: Chirag Singhal
+
+## Hero
+
+Transmutation Lab. Free online converter. CSV, JSON, YAML, XML, units, number bases and color formats — converted instantly in your browser. No upload, no signup, nothing stored. Everything runs on your machine.
+
+## Tool: Data formats (CSV / JSON / YAML / XML)
+
+Convert structured data between CSV, JSON, YAML, and XML in any direction. Paste text or drag-and-drop a file into the input; the converted result appears ready to copy or download. A swap button flips source and target formats and reuses the current output as the next input.
+
+- Supported formats: JSON, YAML, CSV, XML.
+- Any-direction conversion (e.g. CSV → JSON, YAML → XML, XML → CSV).
+- CSV parsing uses a header row with dynamic typing; empty lines skipped.
+- Heavy parsers (`js-yaml`, `papaparse`, `fast-xml-parser`) load on demand only when their format is used, so first paint ships minimal JavaScript.
+- Errors are reported inline (e.g. the first parser error message) without crashing the app.
+
+### Optional AI over data
+
+- Describe dataset: returns 3–5 short bullet points — what the data represents, its fields and types, row count if tabular, and one notable observation.
+- Infer JSON Schema: returns a draft-07 JSON Schema inferred from the sample, schema only, no prose.
+- AI is optional and keyless; if it is unavailable the UI says so and core conversion continues to work.
+
+## Tool: Units
+
+Convert physical quantities. Enter one value and see it expressed in every unit within the category at once.
+
+- Length: millimeter, centimeter, meter, kilometer, inch, foot, yard, mile, nautical mile.
+- Mass: milligram, gram, kilogram, metric ton, ounce, pound, stone.
+- Temperature: Celsius, Fahrenheit, Kelvin (offset-aware, not just factor-based).
+- Data size: bit, byte, and both decimal (KB/MB/GB/TB, ×1000) and binary (KiB/MiB/GiB/TiB, ×1024) multiples.
+
+## Tool: Number bases
+
+Convert integers between number bases with arbitrary precision.
+
+- Bases 2 through 36 (binary, octal, decimal, hexadecimal, base-36, and everything between).
+- Arbitrary-precision integers via JavaScript BigInt — no overflow on large values.
+- Accepts common prefixes `0x` (hex), `0b` (binary), `0o` (octal); a prefix is only stripped when it matches the selected base.
+- Rejects invalid digits for the chosen base with a clear error.
+- Supports negative numbers.
+
+## Tool: Color
+
+Convert between color formats with alpha support and a live preview.
+
+- HEX ⇌ RGB ⇌ HSL, including alpha.
+- Accepts `#rgb`, `#rrggbb`, `#rrggbbaa`, `rgb()`, `rgba()`, `hsl()`, `hsla()`.
+- Live color swatch and native OS color picker.
+
+## How it works
+
+- Static Astro site, output as plain HTML/CSS/JS; interactive tools are React 19 islands hydrated on load.
+- 100% client-side: no backend, no network calls for conversion. The only outbound request is the optional AI feature, which you trigger explicitly.
+- Installable PWA with offline support (service worker precache); works after first load without a connection.
+- Styling via Tailwind v4 and shared `@chirag127/oz-*` atomic packages (tokens, chrome, file helpers, AI).
+
+## FAQ
+
+- Is it free? Yes, completely free, no signup, no account.
+- Is my data uploaded? No. All conversion runs in your browser; nothing is sent to a server. The only network request is the optional AI feature you explicitly trigger.
+- Do I need an API key for AI? No. AI uses a keyless multi-provider package (`@chirag127/oz-ai`, g4f failover). If providers are down, AI degrades gracefully and core conversion still works.
+- Can I convert files, not just pasted text? Yes — drag and drop a file into the data converter, or paste text. Results can be copied or downloaded.
+- How large can numbers be for base conversion? Arbitrary — base conversion uses BigInt, so there is no fixed integer size limit.
+- Does it work offline? Yes, after the first visit; it is an installable PWA that precaches its assets.
+
+## Tech stack
+
+- Astro (static output) + React 19 islands + Tailwind CSS v4.
+- Shared atomic packages: `@chirag127/oz-ai` (keyless AI), `@chirag127/oz-file` (drop/read/download helpers), `@chirag127/oz-tokens-base` (design tokens), `@chirag127/oz-chrome` (shell/chrome).
+- Parsers: `js-yaml`, `papaparse`, `fast-xml-parser` — dynamically imported per feature.
+- Hosting: Cloudflare Pages. Domain: convert.oriz.in.
+
+## Privacy
+
+No backend. No network calls for conversion. Nothing is stored. The single optional outbound request is the AI feature, triggered only when you ask for it.
