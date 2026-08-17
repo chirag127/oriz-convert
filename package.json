@@ -2,7 +2,7 @@
   "name": "oriz-convert",
   "type": "module",
   "version": "1.0.0",
-  "description": "Universal converter — CSV/JSON/YAML/XML, units, number bases, color formats. 100% client-side.",
+  "description": "Universal converter \u2014 CSV/JSON/YAML/XML, units, number bases, color formats. 100% client-side.",
   "license": "MIT",
   "author": "Chirag Singhal",
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "@astrojs/react": "^5.0.7",
     "@astrojs/sitemap": "^3.7.3",
-    "@chirag127/oz-ai": "^0.3.1",
+    "@chirag127/oz-ai": "^0.3.3",
     "@chirag127/oz-chrome": "^0.1.0",
     "@chirag127/oz-file": "^0.1.0",
     "@chirag127/oz-tokens-base": "^0.1.0",
